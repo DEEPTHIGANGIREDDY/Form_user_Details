@@ -22,11 +22,14 @@ const App = () => {
       );
       setFormData(updatedData);
       setSelectedData(null);
+      localStorage.setItem('formData', JSON.stringify(updatedData));
     } else {
       // if the selectedData is null, it means we are adding a new entry
-      setFormData([...formData, newData]);
+      const updatedFormData =[...formData, newData]
+      setFormData(updatedFormData);
+      localStorage.setItem('formData', JSON.stringify(updatedFormData));
     }
-    localStorage.setItem('formData', JSON.stringify(formData));
+    
   };
 
   const deleteData = (index) => {
